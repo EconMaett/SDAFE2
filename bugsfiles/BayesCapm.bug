@@ -1,0 +1,16 @@
+model{
+for (t in 1:N)
+  {
+  for (j in 1:m)
+    {
+       R[t,j] ~ dnorm(beta[j]*mkt[t], tauepsilon[j])
+    }  
+   }  
+for (j in 1:m)
+{
+  beta[j] ~ dnorm(meanbeta, taubeta)
+  tauepsilon[j] ~ dgamma(0.1, 0.001)
+}
+meanbeta ~ dnorm(1, 0.000001)
+taubeta ~ dunif(1, 100)
+}

@@ -1,0 +1,26 @@
+model
+{
+  for (i in 1:N)
+  {
+    y[i] ~ dt(mu, tau[i], nu)
+  }
+  logh[1] ~ dnorm(0, 1.0E-6)
+  for(i in 2:N)
+  {
+    logh[i] ~ dnorm(beta0 + phi * logh[i-1] + theta * v[i-1], tau_v)
+    v[i] <- logh[i] - beta0 + phi * logh[i-1] + theta * v[i-1] 
+  }
+  for (i in 1:N)
+  {
+    tau[i] <- exp(-logh[i])
+    h[i] <- 1/tau[i]
+  }
+  mu ~ dnorm(0.0, 1) 
+  beta0 ~ dnorm(0, 0.0001)
+  phi ~ dnorm(0.4, 0.0001)
+  theta ~ dnorm(0, 0.0001)
+  tau_v ~ dgamma(0.01, 0.01)
+  v[1] ~ dnorm(0, 0.001)
+  nu ~ dunif(1,30)
+  sigma_v <- 1 / sqrt(tau_v)
+}

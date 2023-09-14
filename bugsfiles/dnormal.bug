@@ -1,0 +1,16 @@
+model{
+  for(i in 1:N)
+  {
+    mu2[i,1:m] ~ dmnorm(mu[], tau[,])
+       for(j in 1:m){y[i,j] ~ dnorm(mu2[i,j], tau2)}
+  }
+for (k in 1:m)
+{
+  mu[k] ~ dnorm(alpha, tau_mu) 
+}
+tau2 ~ dgamma(0.1,0.001)
+alpha ~ dnorm(0, 0.001)
+tau_mu ~ dgamma(0.1, 0.01)
+tau[1:m,1:m] ~ dwish(Prec_tau[,], df_wishart)
+lambda[1:m,1:m] <- inverse(tau[,])
+}

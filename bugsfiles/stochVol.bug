@@ -1,0 +1,32 @@
+model{
+for(i in 1:N)
+{
+  r[i] ~ dnorm(mu,tau[i])
+}
+logh[1] ~ dnorm(0,1.0E-6)
+for(i in 2:N){
+  mulogh[i] <- alp0+alp1*logh[i-1]
+  logh[i] ~ dnorm(mulogh[i],tau_v)}
+for (i in 1:N)
+{
+  tau[i] <- exp(-logh[i])
+}
+mu ~ dnorm(0.0,1)
+tau_v ~ dgamma(0.01,0.01)
+alp0 ~ dnorm(0,0.0001)
+alp1 ~ dnorm(.4,0.0001)
+sig_v <- 1/sqrt(tau_v)
+for (i in 1992:N)
+{
+  loghEnd[i-1991] <- logh[i]
+}
+muloghnew[1] <- alp0+alp1*logh[N]
+loghnew[1] ~ dnorm(muloghnew[1],tau_v)
+for (i in 2:5)
+{
+  muloghnew[i] <- alp0+alp1*loghnew[i-1]
+  loghnew[i] ~ dnorm(muloghnew[i],tau_v)
+}
+}
+
+

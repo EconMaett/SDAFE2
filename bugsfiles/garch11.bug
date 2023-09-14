@@ -1,0 +1,18 @@
+model{
+for (t in 1:N) 
+{
+  y[t]~dt(mu, tau[t], nu)
+  e[t] <- y[t] - mu
+  tau[t] <- 1/h[t]
+}
+for (t in 2:N)
+{
+  h[t] <- alpha0 + alpha1 * pow(e[t-1],2) + beta0 * h[t-1]
+}
+mu ~ dnorm(0, 0.001)
+h[1] ~ dunif(0, 0.0012)
+alpha0 ~ dunif(0, 0.2)
+alpha1 ~ dunif(0.00001, 0.8)
+beta0 ~ dunif(0.00001, 0.8)
+nu ~ dunif(1,30)
+}
