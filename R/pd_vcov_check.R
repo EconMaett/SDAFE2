@@ -1,4 +1,4 @@
-pd.vcov.check <- function(Sigma) {
+"pd_vcov_check" <- function(Sigma) {
   dex <- NULL
   if (is.na(dim(Sigma)[3])) {
     sva <- svd(Sigma)

@@ -1,4 +1,4 @@
-"DCCt.llik" <- function(theta, innov, m = 5) {
+"DCCt_llik" <- function(theta, innov, m = 5) {
   # llik for the correlation component
   E <- innov
   n <- dim(E)[1]

@@ -1,4 +1,4 @@
-"dvec.garch.sigma" <- function(param, innov) {
+"DVEC_GARCH_sigma" <- function(param, innov) {
   omega <- param[1:3]
   alpha <- param[4:6]
   beta  <- param[7:9]

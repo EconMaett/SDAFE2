@@ -1,11 +1,9 @@
-## **********************************
-## DVEC GARCH(1,1) estimation ----
-## only for d = 2 components
-## **********************************
-require(fGarch)
-library(mnormt)
-
-"dvec.garch.nllik" <- function(param, innov) {
+# **********************************
+# DVEC GARCH(1,1) estimation ----
+# only for d = 2 components
+# uses fGarch and mnormt packages 
+# **********************************
+"DVEC_GARCH_nllik" <- function(param, innov) {
   omega <- param[1:3]
   alpha <- param[4:6]
   beta  <- param[7:9]

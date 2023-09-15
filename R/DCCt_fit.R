@@ -1,4 +1,4 @@
-"DCCt.fit" <- function(theta.0 = 0.9, innov, m = 5) {
+"DCCt_fit" <- function(theta.0 = 0.9, innov, m = 5) {
   
   Y <- innov
   n <- dim(Y)[1]
@@ -16,9 +16,9 @@
     E[, i] <- Y[, i] / sqrt(fit.temp@h.t)
   }
   
-  DCCt.params <- est.DCCt(theta = theta.0, innov = E, m = m)
-  DCCt.params
-  DCCt.Sigma <- sigma.DCCt(theta = DCCt.params, innov = Y, m = m)
+  DCCt.params <- DCCt_est(theta = theta.0, innov = E, m = m)
+  print(DCCt.params)
+  DCCt.Sigma  <- DCCt_sigma(theta = DCCt.params, innov = Y, m = m)
   
   return(list(Sigma.t = DCCt.Sigma$Sigma.t, R.t = DCCt.Sigma$R.t, coef = garch.omega.alpha.beta, lambda = DCCt.params))
 }

@@ -1,3 +1,4 @@
+# Test with canonicalW(orthogonalize(W))
 "canonicalW" <- function(W) {
   
   if (dim(W)[1] != dim(W)[2]) {
@@ -13,9 +14,9 @@
   
   for (i in 1:d) {
     index <- which.max(abs(W))
-    row.index <- index %% d # row
+    row.index <- index %% d 
     row.index <- ifelse(row.index == 0, d, row.index)
-    col.index <- ceiling(index / d) # col
+    col.index <- ceiling(index / d)
     w.i <- W.temp[row.index, ]
     W.new[col.index, ] <- w.i * ifelse(w.i[col.index] < 0, -1, 1)
     W[row.index, ] <- 0

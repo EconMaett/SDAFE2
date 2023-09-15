@@ -1,4 +1,4 @@
-"DCCe.sigma" <- function(theta, innov) {
+"DCCe_sigma" <- function(theta, innov) {
   
   Y <- innov
   n <- dim(Y)[1]

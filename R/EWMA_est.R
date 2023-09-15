@@ -1,4 +1,4 @@
-"ewma.est" <- function(lambda.0, innov) {
+"EWMA_est" <- function(lambda.0, innov) {
   out <- optim(
     par = lambda.0, 
     fn = nllik.ewma, 

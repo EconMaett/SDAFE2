@@ -1,4 +1,4 @@
-"doc.garch" <- function(E, L = 4., c = 2.25, theta.ini = NULL,
+"DOC_garch" <- function(E, L = 4., c = 2.25, theta.ini = NULL,
                         n.ahead = 10, common.tail.index = FALSE) {
   E <- as.matrix(E)
   d <- ncol(E)

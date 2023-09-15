@@ -15,7 +15,7 @@
       x <- W[j, j]
       y <- W[i, j]
       theta.temp <- atan2(y, x)
-      Q.ij <- givens.rotation(theta.temp, d, c(i, j))
+      Q.ij <- givens_rotation(theta.temp, d, c(i, j))
       W.temp <- Q.ij %*% W
       W <- W.temp
       theta[index] <- theta.temp

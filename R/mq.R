@@ -23,9 +23,10 @@
   }
   output <- as.data.frame(matrix(out[lag, ], 1, 4))
   names(output) <- c("K", "Q(K)", "d.f.", "p-value")
-  print(output)
+  return(output)
 }
 
+# Rename the function
 mLjungBox <- mq
 
 # END

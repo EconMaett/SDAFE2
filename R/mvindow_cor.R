@@ -1,6 +1,6 @@
 # A,B: return series
 # win: window size.
-"mvwindow.cor" <- function(A, B, win = 30) {
+"mvwindow_cor" <- function(A, B, win = 30) {
   T <- length(A)
   ctemp <- cor(A, B)
   cor <- rep(ctemp, T)

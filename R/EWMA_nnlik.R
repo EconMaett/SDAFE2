@@ -1,4 +1,4 @@
-"ewma.nllik" <- function(lambda, innov) {
+"EWMA_nllik" <- function(lambda, innov) {
   clambda <- 1 - lambda
   Sigma.hat <- var(innov)
   invSigma.hat <- chol2inv(chol(Sigma.hat)) 

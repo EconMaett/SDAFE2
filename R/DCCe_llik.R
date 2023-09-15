@@ -1,4 +1,4 @@
-"llik.DCCe" <- function(theta, innov) {
+"DCCe_llik" <- function(theta, innov) {
   # llik for the correlation component
   E <- innov
   n <- dim(E)[1]

@@ -10,7 +10,7 @@
   index <- 1
   for (j in 2:d) {
     for (i in (j - 1):1) {
-      Q.ij <- givens.rotation(theta[index], d, c(i, j))
+      Q.ij <- givens_rotation(theta[index], d, c(i, j))
       W <- Q.ij %*% W
       index <- index + 1
     }

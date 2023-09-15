@@ -5,7 +5,7 @@
 # Max_lag L (1x1) for lags 0,1,...,L.
 # Diagonal weighting matrix.
 # See Matteson and Tsay (2010)
-"DOC.obj" <- function(theta, Z, c, L) {
+"DOC_obj" <- function(theta, Z, c, L) {
   p <- length(theta)
   p2 <- 2 * p
   q <- L * p2 + p
@@ -41,7 +41,7 @@
   phi <- 1 - (0:L) / N
   phi.total <- sum(phi)
   phi <- phi / phi.total
-  ##  PHI = c( rep(phi[1],p), rep(phi[-1],each = p2) )
+  # PHI = c( rep(phi[1],p), rep(phi[-1],each = p2) )
   PHI <- c(rep(phi[1] / p, p), rep(phi[-1] / p2, each = p2))
   PHI <- diag(PHI)
   return(crossprod(f.bar, PHI) %*% f.bar)

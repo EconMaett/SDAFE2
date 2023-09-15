@@ -1,4 +1,4 @@
-"matrix.sqrt" <- function(A) {
+"matrix_sqrt" <- function(A) {
   sva <- svd(A)
   if (min(sva$d) >= 0) {
     Asqrt <- t(sva$v %*% (t(sva$u) * sqrt(sva$d)))

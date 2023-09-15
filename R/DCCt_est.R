@@ -1,4 +1,4 @@
-"DCCt.est" <- function(theta, innov, m = 5) {
+"DCCt_est" <- function(theta, innov, m = 5) {
   out <- optim(
     theta, llik.DCCt, 
     lower = c(0.0001, 0.0001), 

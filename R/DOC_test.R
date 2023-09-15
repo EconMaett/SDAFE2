@@ -1,4 +1,4 @@
-DOC.test <- function(A, m) {
+"DOC_test" <- function(A, m) {
   N <- dim(A)[1]
   k <- dim(A)[2]
   temp <- numeric(m)

@@ -1,6 +1,6 @@
 # rt: return series
 # win: window size.
-"mvwindow.var" <- function(rt, win = 30) {
+"mvwindow_var" <- function(rt, win = 30) {
   T <- length(rt)
   vtemp <- var(rt)
   vol <- rep(vtemp, T)

@@ -1,4 +1,4 @@
-"DCCe.fit" <- function(theta.0 = 0.9, innov) {
+"DCCe_fit" <- function(theta.0 = 0.9, innov) {
   Y <- innov
   n <- dim(Y)[1]
   d <- dim(Y)[2]
@@ -15,9 +15,9 @@
     E[, i] <- Y[, i] / sqrt(fit.temp@h.t)
   }
   
-  DCCe.params <- est.DCCe(theta = theta.0, innov = E)
+  DCCe.params <- DCCe_est(theta = theta.0, innov = E)
   DCCe.params
-  DCCe.Sigma <- sigma.DCCe(theta = DCCe.params, innov = Y)
+  DCCe.Sigma  <- DCCe_sigma(theta = DCCe.params, innov = Y)
   
   return(list(Sigma.t = DCCe.Sigma$Sigma.t, R.t = DCCe.Sigma$R.t, coef = garch.omega.alpha.beta, lambda = DCCe.params))
 }

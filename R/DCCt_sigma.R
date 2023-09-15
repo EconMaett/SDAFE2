@@ -1,4 +1,4 @@
-"DCCt.sigma" <- function(theta, innov, m = 5) {
+"DCCt_sigma" <- function(theta, innov, m = 5) {
   Y <- innov
   n <- dim(Y)[1]
   d <- dim(Y)[2]
