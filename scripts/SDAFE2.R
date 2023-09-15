@@ -3,16 +3,15 @@
 # Statistics and Data Analysis for Financial Engineering, 2nd Edition
 # by Ruppert and Matteson
 # *******************************************************************
-
 require(fGarch)
 
-## **********************************
-## multivariate Ljung--Box tests ----
-## **********************************
+#######################################
+#### multivariate Ljung--Box tests ####
+#######################################
 
 "mq" <- function(x, lag = 1, df.adj = 0) {
   # Compute multivariate Ljung-Box test statistics
-  
+  #
   x <- as.matrix(x)
   nr <- dim(x)[1]
   nc <- dim(x)[2]
@@ -66,10 +65,10 @@ mLjungBox <- mq
   round(out, 3)
 }
 
+###################################
+#### EWMA estimation functions ####
+###################################
 
-## ******************************
-## EWMA estimation functions ----
-## ******************************
 "nllik.ewma" <- function(lambda, innov) {
   clambda <- 1 - lambda
   Sigma.hat <- var(innov)
@@ -116,12 +115,11 @@ mLjungBox <- mq
   Sigma.t
 }
 
-
-## **********************************
-## DVEC GARCH(1,1) estimation ----
-## only for d = 2 components
-## requires library(mnormt)
-## **********************************
+###################################
+#### DVEC GARCH(1,1) estimation ###
+#### only for d = 2 components ####
+#### requires library(mnormt) #####
+###################################
 
 "nllik.dvec.garch" <- function(param, innov) {
   omega <- param[1:3]
@@ -183,10 +181,9 @@ mLjungBox <- mq
   list(Sigma.t = Sigma.dvec)
 }
 
-
-## ******************************
-## DCCe estimation functions ----
-## ******************************
+###################################
+#### DCCe estimation functions ####
+###################################
 
 "llik.DCCe" <- function(theta, innov) {
   # llik for the correlation component
@@ -279,14 +276,13 @@ mLjungBox <- mq
   list(Sigma.t = DCCe.Sigma$Sigma.t, R.t = DCCe.Sigma$R.t, coef = garch.omega.alpha.beta, lambda = DCCe.params)
 }
 
-
-## *****************************
-## DOC estimation functions ----
-## *****************************
+###################################
+#### DOC estimation functions #####
+###################################
 
 "DOC.obj" <- function(theta, Z, c, L) {
-  # Compute the unconstrained objective function for the DOC in volatility algorithm.
-  # For use in estimating mixing parameter, theta (px1).
+  # Compute the unconstrained objective function for the DOC in volatility algotithm.
+  # For use in esimating mixing parameter, theta (px1).
   # Time series vector Z (nxd) should be standardized.
   # Truncation level for computing Huber's function c (1x1) (non-negative).
   # Max_lag L (1x1) for lags 0,1,...,L.
@@ -498,9 +494,10 @@ DOC.test <- function(A, m) {
 }
 
 
-## ********************
-## Other functions ----
-## ********************
+###################################
+#### Other functions  #############
+###################################
+
 "matrix.sqrt" <- function(A) {
   sva <- svd(A)
   if (min(sva$d) >= 0) {
@@ -606,7 +603,7 @@ pd.vcov.check <- function(Sigma) {
 "theta2W" <- function(theta) {
   # For a vector of angles theta, returns W, a d x d Givens rotation matrix:
   # W = Q.1,d %*% ... %*% Q.d-1,d %*% Q.1,d-1 %*% ... %*% Q.1,3 %*% Q.2,3 %*% Q.1,2
-  #  if(theta < 0  || pi < theta){stop("theta must be in the interval [0,pi]")}
+  ##  if(theta < 0  || pi < theta){stop("theta must be in the interval [0,pi]")}
   d <- (sqrt(8 * length(theta) + 1) + 1) / 2
   if (d - floor(d) != 0) {
     stop("theta must have length: d(d-1)/2")
@@ -687,9 +684,9 @@ pd.vcov.check <- function(Sigma) {
 }
 
 
-## ******************************
-## DCCt estimation functions ----
-## ******************************
+###################################
+#### DCCt estimation functions ####
+###################################
 
 "llik.DCCt" <- function(theta, innov, m = 5) {
   # llik for the correlation component
