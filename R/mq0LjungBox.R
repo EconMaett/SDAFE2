@@ -1,6 +1,6 @@
 # multivariate Ljung--Box tests ----
 # Compute multivariate Ljung-Box test statistics
-"mq0" <- function(A, m) {
+"mq0LjungBox" <- function(A, m) {
   N <- dim(A)[1]
   k <- dim(A)[2]
   temp <- numeric(m)

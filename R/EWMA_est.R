@@ -1,7 +1,7 @@
 "EWMA_est" <- function(lambda.0, innov) {
   out <- optim(
     par = lambda.0, 
-    fn = nllik.ewma, 
+    fn = EWMA_nllik, 
     lower = 0.001, 
     upper = 0.999, 
     innov = innov, 

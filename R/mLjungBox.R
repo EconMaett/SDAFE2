@@ -1,6 +1,6 @@
 # multivariate Ljung--Box tests ----
 # Compute multivariate Ljung-Box test statistics
-"mq" <- function(x, lag = 1, df.adj = 0) {
+"mLjungBox" <- function(x, lag = 1, df.adj = 0) {
   x <- as.matrix(x)
   nr <- dim(x)[1]
   nc <- dim(x)[2]
@@ -25,8 +25,5 @@
   names(output) <- c("K", "Q(K)", "d.f.", "p-value")
   return(output)
 }
-
-# Rename the function
-mLjungBox <- mq
 
 # END

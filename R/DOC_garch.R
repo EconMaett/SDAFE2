@@ -20,7 +20,7 @@
   # Perform DOC in Volatility Estimation
   out <- optim(
     par = theta.ini, 
-    fn = DOC.obj, 
+    fn = DOC_obj, 
     gr = NULL,
     Z = Z, 
     c = c, 
